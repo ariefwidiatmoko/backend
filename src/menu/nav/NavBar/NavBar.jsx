@@ -1,35 +1,35 @@
 import React, { Component } from "react";
-import { Menu, Container, Button, Icon } from "semantic-ui-react";
+import { Menu, Container, Icon } from "semantic-ui-react";
 import DropdownMenu from './DropdownMenu'
+import { Link, withRouter } from "react-router-dom";
+import SignedOutMenu from "./SignMenu/SignedOutMenu";
+import SignedInMenu from "./SignMenu/SignedInMenu";
 
 class NavBar extends Component {
+  state = {
+    authenticated: false
+  }
+
+  handleSignIn = () => this.setState({ authenticated: true });
+  handleSignOut = () => {
+    this.setState({ authenticated: false });
+    this.props.history.push('/');
+  }
+
   render() {
-    const {sidebarToggle} = this.props
+    const {authenticated} = this.state;
     return (
       <Menu inverted fixed="top">
         <Container>
-          <DropdownMenu/>
-          <Menu.Item header>
-            <Icon onClick={sidebarToggle} name="universal access" size='large' />Dashboard
+          {authenticated ? <DropdownMenu/> : null}
+          <Menu.Item as={Link} to='/' header>
+            <Icon name="universal access" size='large' />Dashboard
           </Menu.Item>
-          <Menu.Item position="right">
-            <Button basic inverted animated='vertical'>
-                <Button.Content hidden>Login</Button.Content>
-                <Button.Content visible>
-                    <Icon name='sign in' />
-                </Button.Content>
-            </Button>
-            <Button basic inverted animated='vertical' style={{ marginLeft: "0.5em" }}>
-                <Button.Content hidden>Logout</Button.Content>
-                <Button.Content visible>
-                    <Icon name='log out' />
-                </Button.Content>
-            </Button>
-          </Menu.Item>
+          { authenticated ? <SignedInMenu signOut={this.handleSignOut} /> : <SignedOutMenu signIn={this.handleSignIn} />}
         </Container>
       </Menu>
     );
   }
 }
 
-export default NavBar;
+export default withRouter(NavBar);
