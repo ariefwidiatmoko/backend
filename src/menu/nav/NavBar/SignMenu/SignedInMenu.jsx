@@ -13,7 +13,7 @@ const SignedInMenu = ({signOut}) => {
                   <Dropdown.Item text="My Network" icon="users" />
                   <Dropdown.Item text="My Profile" icon="user" />
                   <Dropdown.Item as={NavLink} to='/settings' text="Settings" icon="settings" />
-                  <Dropdown.Item onClick={signOut} text="Sign Out" icon="power" />
+                  <Dropdown.Item onClick={signOut} text="Sign Out" icon="sign-out" />
                 </Dropdown.Menu>
               </Dropdown>
             </Menu.Item>

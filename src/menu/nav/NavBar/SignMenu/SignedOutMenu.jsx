@@ -5,9 +5,9 @@ const SignedOutMenu = ({signIn}) => {
     return (
         <Menu.Item position="right">
           <Button onClick={signIn} basic inverted animated='vertical'>
-              <Button.Content hidden>Login</Button.Content>
+              <Button.Content hidden>Sign In</Button.Content>
               <Button.Content visible>
-                  <Icon name='sign in' />
+                  <Icon name='sign-in' />
               </Button.Content>
           </Button>
           <Button basic inverted animated='vertical' style={{ marginLeft: "0.5em" }}>

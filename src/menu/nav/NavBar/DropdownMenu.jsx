@@ -28,6 +28,10 @@ class DropdownMenu extends Component {
             <Icon name="user circle" />
             Profile
           </Dropdown.Item>
+          <Dropdown.Item as={NavLink} to='/tests'>
+            <Icon name="lab" />
+            Test Area
+          </Dropdown.Item>
           <Dropdown.Item>
             <Icon name="dropdown" />
             <span className="text">
@@ -42,8 +46,8 @@ class DropdownMenu extends Component {
             </Dropdown.Menu>
           </Dropdown.Item>
           <Dropdown.Item>
-            <Icon name="log out" />
-            Log Out
+            <Icon name="sign-out" />
+            Sign Out
           </Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
