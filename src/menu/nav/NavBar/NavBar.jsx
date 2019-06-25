@@ -22,7 +22,7 @@ class NavBar extends Component {
       <Menu inverted fixed="top">
         <Container>
           {authenticated ? <DropdownMenu/> : null}
-          <Menu.Item as={Link} to='/' header>
+          <Menu.Item as={Link} to='/events' header>
             <Icon name="universal access" size='large' />Dashboard
           </Menu.Item>
           { authenticated ? <SignedInMenu signOut={this.handleSignOut} /> : <SignedOutMenu signIn={this.handleSignIn} />}

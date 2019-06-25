@@ -17,7 +17,7 @@ class DropdownMenu extends Component {
               <Dropdown.Item as={NavLink} to="/events-create">
                 New Event
               </Dropdown.Item>
-              <Dropdown.Item>Events</Dropdown.Item>
+              <Dropdown.Item as={NavLink} to='/events'>Events</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown.Item>
           <Dropdown.Item as={NavLink} to="/people">

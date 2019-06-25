@@ -1,8 +1,12 @@
-import { combineReducers } from "C:/Users/arief/AppData/Local/Microsoft/TypeScript/3.5/node_modules/redux";
+import { combineReducers } from "redux";
+import {reducer as formReducer} from "redux-form"
 import testReducer from "../../menu/testarea/testReducer";
+import eventReducer from "../../menu/event/eventReducer";
 
 const rootReducer = combineReducers({
-    test: testReducer
+    form: formReducer,
+    test: testReducer,
+    events: eventReducer
 })
 
 export default rootReducer
