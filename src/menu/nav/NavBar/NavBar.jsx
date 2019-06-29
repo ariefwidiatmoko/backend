@@ -1,23 +1,31 @@
 import React, { Component } from "react";
+import {connect} from 'react-redux'
 import { Menu, Container, Icon } from "semantic-ui-react";
 import DropdownMenu from './DropdownMenu'
 import { Link, withRouter } from "react-router-dom";
 import SignedOutMenu from "./SignMenu/SignedOutMenu";
 import SignedInMenu from "./SignMenu/SignedInMenu";
+import { openModal } from '../../modals/modalActions'
+import {logout} from '../../auth/authActions'
 
 class NavBar extends Component {
-  state = {
-    authenticated: false
-  }
 
-  handleSignIn = () => this.setState({ authenticated: true });
+  handleSignIn = () => {
+    this.props.openModal('LoginModal')
+  };
+
+  handleRegister = () => {
+    this.props.openModal('RegisterModal')
+  };
+
   handleSignOut = () => {
-    this.setState({ authenticated: false });
+    this.props.logout()
     this.props.history.push('/');
   }
 
   render() {
-    const {authenticated} = this.state;
+    const {auth} = this.props;
+    const authenticated = auth.authenticated;
     return (
       <Menu inverted fixed="top">
         <Container>
@@ -25,11 +33,19 @@ class NavBar extends Component {
           <Menu.Item as={Link} to='/events' header>
             <Icon name="universal access" size='large' />Dashboard
           </Menu.Item>
-          { authenticated ? <SignedInMenu signOut={this.handleSignOut} /> : <SignedOutMenu signIn={this.handleSignIn} />}
+          { authenticated ? <SignedInMenu signOut={this.handleSignOut} currentUser={auth.currentUser} /> : <SignedOutMenu signIn={this.handleSignIn} register={this.handleRegister} />}
         </Container>
       </Menu>
     );
   }
 }
 
-export default withRouter(NavBar);
+const mapDispatctToProps = {
+  openModal, logout
+}
+
+const mapStateToProps = (state) => ({
+  auth: state.auth
+})
+
+export default withRouter(connect(mapStateToProps, mapDispatctToProps)(NavBar));

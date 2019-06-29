@@ -1,7 +1,7 @@
 import React from 'react'
 import {Menu, Button, Icon} from 'semantic-ui-react';
 
-const SignedOutMenu = ({signIn}) => {
+const SignedOutMenu = ({signIn, register}) => {
     return (
         <Menu.Item position="right">
           <Button onClick={signIn} basic inverted animated='vertical'>
@@ -10,7 +10,7 @@ const SignedOutMenu = ({signIn}) => {
                   <Icon name='sign-in' />
               </Button.Content>
           </Button>
-          <Button basic inverted animated='vertical' style={{ marginLeft: "0.5em" }}>
+          <Button onClick={register} basic inverted animated='vertical' style={{ marginLeft: "0.5em" }}>
               <Button.Content hidden>Register</Button.Content>
               <Button.Content visible>
                   <Icon name='address book outline' />
