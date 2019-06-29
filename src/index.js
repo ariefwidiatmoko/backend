@@ -8,8 +8,10 @@ import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
 import { configureStore } from './app/store/ConfigureStore';
 import ScrollToTop from './app/common/util/ScrollToTop'
+import { loadEvents } from './menu/event/eventActions';
 
 const store = configureStore();
+store.dispatch(loadEvents());
 
 const rootEl = document.getElementById('root');
 
