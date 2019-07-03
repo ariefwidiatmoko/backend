@@ -1,12 +1,19 @@
 import React, { Component } from "react";
-import { Dropdown, Icon } from "semantic-ui-react";
+import { Dropdown, Icon, Image } from "semantic-ui-react";
 import { NavLink } from "react-router-dom";
 
 class DropdownMenu extends Component {
   render() {
+    const {signOut, auth} = this.props;
     return (
       <Dropdown closeOnChange={true} item icon="bars" simple>
         <Dropdown.Menu>
+          <Dropdown.Item>
+            <div style={{textAlign: 'center'}}>
+              <Image src={auth.photoURL || '/assets/user.png'} size='tiny' avatar />
+            </div>
+            <div style={{textAlign: 'center', paddingTop: 10, paddingBottom: 7}}>{auth.displayName}</div>
+          </Dropdown.Item>
           <Dropdown.Item>
             <Icon name="dropdown" />
             <span className="text">
@@ -21,12 +28,8 @@ class DropdownMenu extends Component {
             </Dropdown.Menu>
           </Dropdown.Item>
           <Dropdown.Item as={NavLink} to="/people">
-            <Icon name="user circle" />
+            <Icon name="users" />
             People
-          </Dropdown.Item>
-          <Dropdown.Item>
-            <Icon name="user circle" />
-            Profile
           </Dropdown.Item>
           <Dropdown.Item as={NavLink} to='/tests'>
             <Icon name="lab" />
@@ -45,7 +48,7 @@ class DropdownMenu extends Component {
               <Dropdown.Item>Roles</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown.Item>
-          <Dropdown.Item>
+          <Dropdown.Item onClick={signOut}>
             <Icon name="sign-out" />
             Sign Out
           </Dropdown.Item>

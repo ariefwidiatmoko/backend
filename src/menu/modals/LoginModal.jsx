@@ -4,8 +4,6 @@ import {connect} from 'react-redux';
 import LoginForm from '../auth/Login/LoginForm';
 import {closeModal} from "./modalActions";
 
-const mapDispatchToProps = {closeModal};
-
 class LoginModal extends Component {
     render() {
         return (
@@ -26,5 +24,7 @@ class LoginModal extends Component {
         );
     }
 }
+
+const mapDispatchToProps = {closeModal};
 
 export default connect(null, mapDispatchToProps)(LoginModal);

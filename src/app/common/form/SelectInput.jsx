@@ -10,7 +10,7 @@ const SelectInput = ({input, type, placeholder, multiple, options, meta: {touche
                 placeholder={placeholder}
                 options={options}
                 multiple={multiple} />
-            {touched && error && <Label basic color='red'>{error}</Label>}
+            {touched && error && <Label color='red'>{error}</Label>}
         </Form.Field>
     )
 }

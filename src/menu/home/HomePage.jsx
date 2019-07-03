@@ -1,16 +1,20 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import { withRouter } from "react-router-dom";
 import { openModal } from '../modals/modalActions'
 import {Segment, Container, Header, Button, Icon} from 'semantic-ui-react'
 
 class HomePage extends Component {
 
     handleSignIn = () => {
-      this.props.openModal('LoginModal')
+      this.props.openModal('LoginModal');
+      this.props.history.push('/events');
+
     };
 
     handleRegister = () => {
       this.props.openModal('RegisterModal')
+      this.props.history.push('/events');
     };
     render() {
       const {history} = this.props
@@ -54,4 +58,4 @@ const mapDispatctToProps = {
   openModal
 }
 
-export default connect(null, mapDispatctToProps)(HomePage)
+export default withRouter(connect(null, mapDispatctToProps)(HomePage))

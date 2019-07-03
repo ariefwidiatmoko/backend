@@ -7,9 +7,10 @@ import thunk from "redux-thunk";
 import firebase from "../config/firebase";
 
 const rrfConfig = {
-  userProfiles: "users",
+  userProfiles: 'users',
   attachAuthIsReady: true,
-  useFirestoreForProfile: true
+  useFirestoreForProfile: true,
+  updateProfileOnLogin: false
 };
 
 export const configureStore = () => {
