@@ -87,12 +87,12 @@ const Account = ({
       </div> */}
       {providerId && providerId === 'google.com' ? (
         <div>
-          <Header color="teal" sub content="Google Account" />
+          <Header color="teal" sub content="Google Account" style={{marginBottom: 8}} />
           <p>Please visit Google to update your account settings</p>
-          <Button type="button" color="google plus">
+          <a target="_blank" rel="noopener noreferrer" type="button" color="google plus" href='https://account.google.com' style={{padding: 3}}>
             <Icon name="google plus" />
             Go to Google
-          </Button>
+          </a>
         </div>
       ) : (<LoadingComponent inline='centered' />)}
     </Segment>
