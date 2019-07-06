@@ -5,7 +5,7 @@ import SettingNav from './SettingNav';
 import {Route, Redirect, Switch} from 'react-router-dom';
 import BasicPage from './BasicPage';
 import AboutPage from './AboutPage';
-import PhotosPage from './PhotosPage';
+import PhotosPage from './Photos/PhotosPage';
 import AccountPage from './AccountPage';
 import {updatePassword} from '../../auth/authActions';
 import {updateProfile} from '../../user/userActions'
@@ -38,7 +38,7 @@ const mapDispatchToProps = {
 }
 
 const mapStateToProps = (state) => ({
-    providerId: state.firebase.auth.isLoaded && state.firebase.auth.providerData[0].providerId,
+    providerId: state.firebase.auth.providerData[0].providerId,
     user: state.firebase.profile
 })
 

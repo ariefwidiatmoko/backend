@@ -29,7 +29,6 @@ class NavBar extends Component {
   render() {
     const { auth } = this.props;
     const authenticated = auth.isLoaded && !auth.isEmpty;
-    console.log(auth)
     return (
       <Menu inverted fixed="top">
         <Container>

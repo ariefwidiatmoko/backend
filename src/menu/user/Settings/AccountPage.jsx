@@ -1,5 +1,4 @@
 import React from "react";
-import LoadingComponent from '../../../app/layout/LoadingComponent'
 import {
   Segment,
   Header,
@@ -77,15 +76,7 @@ const Account = ({
           </Form>
         </div>
       )}
-      {/* <div>
-        <Header color="teal" sub content="Facebook Account" />
-        <p>Please visit Facebook to update your account settings</p>
-        <Button type="button" color="facebook">
-          <Icon name="facebook" />
-          Go to Facebook
-        </Button>
-      </div> */}
-      {providerId && providerId === 'google.com' ? (
+      {providerId && providerId === 'google.com' && (
         <div>
           <Header color="teal" sub content="Google Account" style={{marginBottom: 8}} />
           <p>Please visit Google to update your account settings</p>
@@ -94,7 +85,7 @@ const Account = ({
             Go to Google
           </a>
         </div>
-      ) : (<LoadingComponent inline='centered' />)}
+      )}
     </Segment>
   );
 };

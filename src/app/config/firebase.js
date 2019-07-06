@@ -9,7 +9,7 @@ const firebaseConfig = {
     authDomain: "dashboard-b52e8.firebaseapp.com",
     databaseURL: "https://dashboard-b52e8.firebaseio.com",
     projectId: "dashboard-b52e8",
-    storageBucket: "",
+    storageBucket: "dashboard-b52e8.appspot.com",
     messagingSenderId: "1007474694663",
     appId: "1:1007474694663:web:5023ed8cd270f6d7"
   };
