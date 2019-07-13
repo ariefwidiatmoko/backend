@@ -3,7 +3,7 @@ import {Loader} from 'semantic-ui-react'
 
 const LoadingComponent = ({inverted = true, inline}) => {
     return (
-        <Loader active={true} inline={inline} content='Loading...' />
+        <Loader active={true} inline={inline} content='Loading...' style={{marginTop: 58}}/>
     )
 }
 

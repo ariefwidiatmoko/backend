@@ -27,12 +27,12 @@ class NavBar extends Component {
   };
 
   render() {
-    const { auth } = this.props;
+    const { auth, profile } = this.props;
     const authenticated = auth.isLoaded && !auth.isEmpty;
     return (
       <Menu inverted fixed="top">
         <Container>
-          {authenticated ? <DropdownMenu signOut={this.handleSignOut} auth={auth} /> : null}
+          {authenticated ? <DropdownMenu signOut={this.handleSignOut} profile={profile} /> : null}
           <Menu.Item as={Link} to="/events" header>
             <Icon name="universal access" size="large" />
             Dashboard
@@ -40,6 +40,7 @@ class NavBar extends Component {
           {authenticated ? (
             <SignedInMenu
               auth={auth}
+              profile={profile}
               signOut={this.handleSignOut}
               currentUser={auth.currentUser}
             />
@@ -61,7 +62,8 @@ const mapDispatctToProps = {
 };
 
 const mapStateToProps = (state) => ({
-  auth: state.firebase.profile
+  profile: state.firebase.profile,
+  auth: state.firebase.auth
 });
 
 export default withRouter(

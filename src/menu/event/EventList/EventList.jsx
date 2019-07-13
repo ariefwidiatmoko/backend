@@ -4,11 +4,11 @@ import LoadingComponent from '../../../app/layout/LoadingComponent';
 
 class EventList extends Component {
     render() {
-        const {events, deletedEvent} = this.props;
+        const {events} = this.props;
         return (
             <Fragment>
                 {events ? events.map(event => (
-                    <EventListItem deletedEvent={deletedEvent} key={event.id} event={event} />
+                    <EventListItem key={event.id} event={event} />
                 )) : <LoadingComponent inline='centered' />}
             </Fragment>
         )

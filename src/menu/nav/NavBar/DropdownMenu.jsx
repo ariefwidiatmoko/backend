@@ -4,15 +4,15 @@ import { NavLink } from "react-router-dom";
 
 class DropdownMenu extends Component {
   render() {
-    const {signOut, auth} = this.props;
+    const {signOut, profile} = this.props;
     return (
       <Dropdown closeOnChange={true} item icon="bars" simple>
         <Dropdown.Menu>
           <Dropdown.Item>
             <div style={{textAlign: 'center'}}>
-              <Image src={auth.photoURL || '/assets/user.png'} size='tiny' avatar />
+              <Image src={profile.photoURL || '/assets/user.png'} size='tiny' avatar />
             </div>
-            <div style={{textAlign: 'center', paddingTop: 10, paddingBottom: 7}}>{auth.displayName}</div>
+            <div style={{textAlign: 'center', paddingTop: 10, paddingBottom: 7}}>{profile.displayName}</div>
           </Dropdown.Item>
           <Dropdown.Item>
             <Icon name="dropdown" />

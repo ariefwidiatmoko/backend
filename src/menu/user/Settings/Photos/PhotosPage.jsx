@@ -137,9 +137,6 @@ const query = ({ auth }) => {
 };
 
 export default compose(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  ),
+  connect(mapStateToProps, mapDispatchToProps),
   firestoreConnect(auth => query(auth))
 )(PhotosPage);
