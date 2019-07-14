@@ -11,7 +11,7 @@ const UserPhoto = ({ photos }) => {
         <Image.Group size="small">
           {photos &&
             photos.map(photo => (
-              <LazyLoad key={photo.name} height={150} placeholder={<Image src='/assets/user.png' />}>
+              <LazyLoad key={photo.name} height={150} placeholder={<Image src='/assets/image.png' />}>
                 <Image src={photo.url} />
               </LazyLoad>
             ))}

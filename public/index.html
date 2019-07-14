@@ -5,26 +5,44 @@
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHBnrmgszp5FbiQYGj64DoHhNdx7KQqx8&libraries=places"></script>
     <title>Admin Dashboard</title>
+    <style>
+      @keyframes backgroundAnimation {
+        0% {background-position: -468px 0}
+        100% {background-position: 468px 0}
+      }
+      .nav--loading {
+        background: white;
+        height: 47px;
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto repeat(4, 10px);
+      }
+      .start--loading_name {
+        height: 10px;
+        width: 99.8%;
+      }
+      .start--loading_name {
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+        animation-iteration-count: infinite;
+        animation-name: backgroundAnimation;
+        animation-timing-function: linear;
+        background: #f6f7f8;
+        background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+        background-size: 800px 104px;
+        position: relative;
+      }
+    </style>
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHBnrmgszp5FbiQYGj64DoHhNdx7KQqx8&libraries=places"></script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+    <div id="root">
+      <div class="nav--loading"></div>
+    </div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
