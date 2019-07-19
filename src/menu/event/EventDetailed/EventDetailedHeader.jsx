@@ -20,6 +20,7 @@ class EventDetailedHeader extends Component {
   render() {
     const {
       event,
+      loading,
       isHost,
       isGoing,
       goingToEvent,
@@ -83,7 +84,7 @@ class EventDetailedHeader extends Component {
                       Cancel My Place
                     </Button>
                   ) : (
-                    <Button onClick={() => goingToEvent(event)} color="teal">
+                    <Button loading={loading} onClick={() => goingToEvent(event)} color="teal">
                       JOIN THIS EVENT
                     </Button>
                   )}

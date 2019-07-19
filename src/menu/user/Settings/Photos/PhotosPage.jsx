@@ -5,11 +5,22 @@ import { firestoreConnect } from "react-redux-firebase";
 import { Segment, Header, Divider, Grid, Button } from "semantic-ui-react";
 import DropzoneInput from "./DropzoneInput";
 import CropperInput from "./CropperInput";
-import { uploadProfileImage, deletePhoto, setMainPhoto } from "../../userActions";
+import {
+  uploadProfileImage,
+  deletePhoto,
+  setMainPhoto
+} from "../../userActions";
 import { toastr } from "react-redux-toastr";
 import UserPhotos from "./UserPhotos";
 
-const PhotosPage = ({ uploadProfileImage, photos, profile, deletePhoto, setMainPhoto, loading }) => {
+const PhotosPage = ({
+  uploadProfileImage,
+  photos,
+  profile,
+  deletePhoto,
+  setMainPhoto,
+  loading
+}) => {
   const [files, setFiles] = useState([]);
   const [cropResult, setCropResult] = useState("");
   const [image, setImage] = useState(null);
@@ -37,21 +48,21 @@ const PhotosPage = ({ uploadProfileImage, photos, profile, deletePhoto, setMainP
     setCropResult("");
   };
 
-  const handleDeletePhoto = async (photo) => {
+  const handleDeletePhoto = async photo => {
     try {
-      await deletePhoto(photo)
+      await deletePhoto(photo);
     } catch (error) {
-      toastr.error('Oops', error.message)
+      toastr.error("Oops", error.message);
     }
-  }
+  };
 
-  const handleSetMainPhoto = async (photo) => {
+  const handleSetMainPhoto = async photo => {
     try {
-      await setMainPhoto(photo)
+      await setMainPhoto(photo);
     } catch (error) {
-      toastr.error('Oops', error.message)
+      toastr.error("Oops", error.message);
     }
-  }
+  };
 
   return (
     <Segment>
@@ -107,7 +118,13 @@ const PhotosPage = ({ uploadProfileImage, photos, profile, deletePhoto, setMainP
       </Grid>
 
       <Divider />
-      <UserPhotos photos={photos} profile={profile} deletePhoto={handleDeletePhoto} setMainPhoto={handleSetMainPhoto} />
+      <UserPhotos
+        photos={photos}
+        profile={profile}
+        deletePhoto={handleDeletePhoto}
+        setMainPhoto={handleSetMainPhoto}
+        loading={loading}
+      />
     </Segment>
   );
 };
@@ -137,6 +154,9 @@ const query = ({ auth }) => {
 };
 
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  ),
   firestoreConnect(auth => query(auth))
 )(PhotosPage);
