@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { useState, Fragment } from "react";
 import { Header, Card, Image, Button, Icon, Popup } from "semantic-ui-react";
 
 const UserPhotos = ({
@@ -8,6 +8,7 @@ const UserPhotos = ({
   setMainPhoto,
   loading
 }) => {
+  const [buttonId, setButtonId] = useState('');
   let filteredPhotos;
   if (photos) {
     filteredPhotos = photos.filter(photo => {
@@ -30,8 +31,9 @@ const UserPhotos = ({
                 <Popup
                   trigger={
                     <Button
-                      loading={loading}
-                      onClick={() => setMainPhoto(photo)}
+                      loading={buttonId === photo.id ? loading : false}
+                      disabled={buttonId === photo.id ? loading : false}
+                      onClick={() => {setMainPhoto(photo); setButtonId(photo.id)}}
                     >
                       <Icon name="check" />
                     </Button>

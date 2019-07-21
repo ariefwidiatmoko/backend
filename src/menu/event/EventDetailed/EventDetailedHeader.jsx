@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { Segment, Image, Item, Header, Button } from "semantic-ui-react";
+import { Segment, Image, Item, Header, Button, Label } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import { format } from "date-fns";
 
@@ -24,7 +24,9 @@ class EventDetailedHeader extends Component {
       isHost,
       isGoing,
       goingToEvent,
-      cancelGoingToEvent
+      cancelGoingToEvent,
+      authenticated,
+      openModal
     } = this.props;
     return (
       <Fragment>
@@ -67,6 +69,9 @@ class EventDetailedHeader extends Component {
               </Segment>
             </Segment>
             <Segment attached="bottom" clearing>
+              {event.cancelled && (
+                <Label size="large" color="red" content="Event is cancelled" />
+              )}
               {isHost && (
                 <Button
                   as={Link}
@@ -79,12 +84,28 @@ class EventDetailedHeader extends Component {
               )}
               {!isHost && (
                 <Fragment>
-                  {isGoing ? (
+                  {isGoing && !event.cancelled && (
                     <Button onClick={() => cancelGoingToEvent(event)}>
                       Cancel My Place
                     </Button>
-                  ) : (
-                    <Button loading={loading} onClick={() => goingToEvent(event)} color="teal">
+                  )}
+
+                  {authenticated && !isGoing && !event.cancelled && (
+                    <Button
+                      loading={loading}
+                      onClick={() => goingToEvent(event)}
+                      color="teal"
+                    >
+                      JOIN THIS EVENT
+                    </Button>
+                  )}
+
+                  {!authenticated && !event.cancelled && (
+                    <Button
+                      loading={loading}
+                      onClick={() => openModal("UnauthModal")}
+                      color="teal"
+                    >
                       JOIN THIS EVENT
                     </Button>
                   )}
