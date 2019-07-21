@@ -58,7 +58,11 @@
     "@types/react-redux-toastr": "^7.4.1",
     "@types/react-router-dom": "^4.3.3",
     "redux-devtools-extension": "^2.13.8",
-    "source-map-explorer": "^1.5.0",
+    "source-map-explorer": "^2.0.1",
     "typescript": "^3.3"
+  },
+  "resolutions": {
+    "browserslist": "4.6.2",
+    "caniuse-lite": "1.0.30000974"
   }
 }

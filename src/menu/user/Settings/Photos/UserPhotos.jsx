@@ -32,7 +32,7 @@ const UserPhotos = ({
                   trigger={
                     <Button
                       loading={buttonId === photo.id ? loading : false}
-                      disabled={buttonId === photo.id ? loading : false}
+                      disabled={loading}
                       onClick={() => {setMainPhoto(photo); setButtonId(photo.id)}}
                     >
                       <Icon name="check" />
